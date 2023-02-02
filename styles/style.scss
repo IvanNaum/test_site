@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+$white: rgb(250, 250, 250);
+$white_hover: rgb(238, 238, 238);
+$black: #000;
+$black_hover: rgb(19, 19, 19);
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    &.lock {
+        overflow: hidden;
+    }
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    background: $white;
+    user-select: none;
+}
+
+.wrapper {
+    width: 60%;
+    max-width: 1150px;
+    min-height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    background: $white;
+
+    header {
+        background: rgb(255, 205, 205);
+    }
+    main {
+        background-color: $white;
+        height: 3000px;
+    }
+    footer {
+        background-color: rgb(145, 186, 255);
+    }
+}
+
+.block {
+    background: $white;
+    border-radius: 15px;
+    padding: 15px 20px;
+    // box-shadow: rgba(0, 0, 0, 0.3) 0px 15px 20px -5px, rgba(0, 0, 0, 0.1) 0px 10px 10px -5px;
+    box-shadow: rgb(0, 0, 0, 0.3) 0px 8px 25px 1px;
+}
+
+.btn {
+    background-color: $white;
+    color: $black;
+    opacity: 1;
+    cursor: pointer;
+    align-items: center;
+    text-transform: uppercase;
+    border: none;
+    transition: all 0.5s ease-out;
+    // transition:  0.1s ease-out;
+
+    // &:hover {
+    //     color: $black_hover;
+    //     background-color: $white_hover;
+    //     // box-shadow: rgba(0, 0, 0, 0.3) 0px 14px 25px -5px, rgba(0, 0, 0, 0.1) 0px 10px 10px -5px;
+    //     box-shadow: rgb(0, 0, 0, 0.3) 0px 8px 25px -1px;
+    // }
+
+    &__close {
+        padding: 0;
+        width: 25px;
+        height: 25px;
+        background-color: transparent;
+        transition: opacity 0.1s ease-out;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    &__modal {
+        color: $white;
+        background-color: rgb(23, 38, 237);
+        &:hover {
+            color: $white_hover;
+            background-color: rgb(17, 33, 255);
+            // box-shadow: rgba(0, 0, 0, 0.3) 0px 14px 25px -5px, rgba(0, 0, 0, 0.1) 0px 10px 10px -5px;
+            box-shadow: rgb(0, 0, 0, 0.3) 0px 8px 25px -1px;
+        }
+    }
+}
+
+.modal {
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-out;
+    &.show {
+        z-index: 100;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    &.show &__window {
+        margin-top: 0;
+        opacity: 1;
+    }
+    &__window {
+        z-index: 1;
+        background-color: $white;
+        margin-top: -30px;
+        opacity: 0.7;
+        transition: opacity 0.1s ease-in-out, margin-top 0.12s ease-in-out;
+
+        &__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+    .overlay {
+        z-index: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        opacity: 0.7;
+    }
+}
